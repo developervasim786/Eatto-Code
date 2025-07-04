@@ -49,8 +49,6 @@ var url = window.location.href;
       jQuery('#zs-shipping-address-states').trigger("change");
       console.log("Trigger State Field");
     }, 1000);
-
-    console.log("This is testing for profile page");
   
   jQuery("#tax_form .theme-continue-btn").append('<a href="javascript:void(0);" class="checkout-button">Continue</a>');
 
@@ -254,7 +252,7 @@ var url = window.location.href;
   if(url.includes("gift-card") == false ) 
   {
 
-    jQuery('.theme-cart-details-summary-total-wrap').after('<p class="uk-block" style="display:none;"><label>Select ( North Ireland Counties ): <span style="color:red;">*</span></label><select id="uk-conty"><option value="">- Select -</option><option value="Antrim">Antrim</option><option value="Belfast">Belfast</option><option value="Down">Down</option><option value="Armagh">Armagh</option><option value="Derry/Londonderry">Derry/Londonderry</option><option value="Tyrone">Tyrone</option><option value="Fermanagh">Fermanagh</option></select></p><p class="dpd-panel"><label>DPD DISPATCH DATE (not delivery date) <span style="color:red;">*</span> </label><input readonly name="dpd_dispatch_date" id="dpd_dispatch_date" type="text" class="theme-input-field-width theme-checkout-input cf-delivery-date" value=""  autocomplete="off"></p><p class="dl-panel"><label>Select (Dublin City North / Dublin City South / North County Dublin): <span style="color:red;">*</span></label><select id="dublin-type"><option value="">- Select -</option><option value="Dublin North">Dublin City North</option><option value="Dublin South">Dublin City South</option><option value="North County Dublin">North County Dublin</option></select></p><p class="dl-panel"><label class="non-dpd-label">Select your delivery day below : <span style="color:red;">*</span></label><label class="dpd-label" style="display:none;">DPD DISPATCH DATE (not delivery date) : <span style="color:red;">*</span></label><input readonly disabled name="Delivery_Date" id="delivery-date" type="text" class="theme-input-field-width theme-checkout-input cf-delivery-date" value=""  autocomplete="off"><br><span style="display:none;font-size: 12px;" class="dpd-label">North county Dublin orders are now shipped with DPD and will be delivered one day after the selected dispatch date. Please email info@eatto.ie for more information.</span></p><p class="dl-panel cf-slot-con"><label>Select your time slot below : <span style="color:red;">*</span></label><select disabled class="theme-input-field-width theme-checkout-input cf-slot" ><option value=""> - Select Slot - </option></select></p>');
+    jQuery('.theme-cart-details-summary-total-wrap').after('<p class="uk-block" style="display:none;"><label>Select ( North Ireland Counties ): <span style="color:red;">*</span></label><select id="uk-conty"><option value="">- Select -</option><option value="Antrim">Antrim</option><option value="Belfast">Belfast</option><option value="Down">Down</option><option value="Armagh">Armagh</option><option value="Derry/Londonderry">Derry/Londonderry</option><option value="Tyrone">Tyrone</option><option value="Fermanagh">Fermanagh</option></select></p><p class="dpd-panel"><label>DPD DISPATCH DATE (not delivery date) <span style="color:red;">*</span> </label><input readonly name="dpd_dispatch_date" id="dpd_dispatch_date" type="text" class="theme-input-field-width theme-checkout-input cf-delivery-date" value=""  autocomplete="off"></p><p style="display:none;" class="dl-pan"><label>Select (Dublin City North / Dublin City South / North County Dublin): <span style="color:red;">*</span></label><select id="dublin-type"><option value="">- Select -</option><option selected="selected" value="Dublin North">Dublin City North</option><option value="Dublin South">Dublin City South</option><option value="North County Dublin">North County Dublin</option></select></p><p class="dl-panel"><label class="non-dpd-label">Select your delivery day below : <span style="color:red;">*</span></label><label class="dpd-label" style="display:none;">DPD DISPATCH DATE (not delivery date) : <span style="color:red;">*</span></label><input readonly name="Delivery_Date" id="delivery-date" type="text" class="theme-input-field-width theme-checkout-input cf-delivery-date" value=""  autocomplete="off"><br><span style="display:none;font-size: 12px;" class="dpd-label">North county Dublin orders are now shipped with DPD and will be delivered one day after the selected dispatch date. Please email info@eatto.ie for more information.</span></p><p class="dl-panel cf-slot-con"><label>Select your time slot below : <span style="color:red;">*</span></label><select class="theme-input-field-width theme-checkout-input cf-slot" ><option value=""> - Select Slot - </option></select></p>');
 
   }
 
@@ -392,31 +390,25 @@ var url = window.location.href;
 
     // Dublin South
     const slots = [];
+
+    slots["Monday"]     = "15:00 – 21:00";
+    slots["Tuesday"]    = "15:00 – 21:00";
+    slots["Wednesday"]  = "15:00 – 21:00";
+    slots["Thursday"]   = "15:00 – 21:00";
+    slots["Friday"]     = "15:00 – 21:00";
     
-    if( jQuery('#dublin-type option:selected').val() == "Dublin South" ){
+    /*if( jQuery('#dublin-type option:selected').val() == "Dublin South" ){
       
-      /*slots["Monday"]     = "18:00 - 22:00";
+      slots["Monday"]     = "18:00 - 22:00";
       slots["Tuesday"]    = "12:00 - 18:00";
       slots["Wednesday"]  = "12:00 - 18:00";
       slots["Thursday"]   = "18:00 - 22:00";
-      slots["Friday"]     = "11:00 - 17:00";*/
-
-      slots["Monday"]     = "10:00 - 02:00";
-      slots["Tuesday"]    = "10:00 - 18:00";
-      slots["Wednesday"]  = "10:00 - 18:00";
-      slots["Thursday"]   = "10:00 - 02:00";
-      slots["Friday"]     = "10:00 - 18:00";
+      slots["Friday"]     = "11:00 - 17:00";
     }
 
     // Dublin North
     if( jQuery('#dublin-type option:selected').val() == "Dublin North" ){
       
-      /*slots["Monday"]     = "12:00 - 18:00";
-      slots["Tuesday"]    = "12:00 - 18:00";
-      slots["Wednesday"]  = "18:00 - 22:00";
-      slots["Thursday"]   = "12:00 - 18:00";
-      slots["Friday"]     = "11:00 - 17:00";*/
-
       slots["Monday"]     = "10:00 - 02:00";
       slots["Tuesday"]    = "10:00 - 18:00";
       slots["Wednesday"]  = "10:00 - 18:00";
@@ -432,7 +424,7 @@ var url = window.location.href;
       slots["Wednesday"]  = "";
       slots["Thursday"]   = "";
       slots["Friday"]     = "";
-    }
+    }*/
 
     var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
@@ -634,8 +626,11 @@ var url = window.location.href;
 
     }else{
 
-      jQuery("#delivery-date").attr("disabled",true).addClass("fl-disabled").val("");
-      jQuery(".cf-slot").attr("disabled",true).addClass("fl-disabled").val("");
+      // jQuery("#delivery-date").attr("disabled",true).addClass("fl-disabled").val("");
+      // jQuery(".cf-slot").attr("disabled",true).addClass("fl-disabled").val("");
+
+      jQuery("#delivery-date").val("");
+      jQuery(".cf-slot").val("");
     }
 
 
@@ -673,8 +668,11 @@ jQuery(document).on('change', '#zs-shipping-address-states', function() {
     jQuery(".dl-panel").show();
     jQuery(".dpd-panel").hide();
 
-    jQuery("#delivery-date").attr("disabled",true).addClass("fl-disabled").val("");
-    jQuery(".cf-slot").attr("disabled",true).addClass("fl-disabled").val("");
+    // jQuery("#delivery-date").attr("disabled",true).addClass("fl-disabled").val("");
+    // jQuery(".cf-slot").attr("disabled",true).addClass("fl-disabled").val("");
+
+    jQuery("#delivery-date").val("");
+    jQuery(".cf-slot").val("");
   }else{
     
     // for DPD
@@ -752,9 +750,6 @@ jQuery(".theme-checkout-button-area .theme-cart-continue-shopping-button").html(
     jQuery("#zs-coupon-form").hide();
   }
 
-
-  console.log(jQuery(".theme-portal-username").text());
-
   if( document.body.textContent.includes("Sign Out") ){
           
           label_for = jQuery(".select-address:checked").attr("id");
@@ -776,9 +771,12 @@ jQuery(".theme-checkout-button-area .theme-cart-continue-shopping-button").html(
             jQuery(".dl-panel").show();
             jQuery(".dpd-panel").hide();
     
-            jQuery("#delivery-date").attr("disabled",true).addClass("fl-disabled").val("");
-            jQuery(".cf-slot").attr("disabled",true).addClass("fl-disabled").val("");
-    
+            // jQuery("#delivery-date").attr("disabled",true).addClass("fl-disabled").val("");
+            // jQuery(".cf-slot").attr("disabled",true).addClass("fl-disabled").val("");
+            
+            jQuery("#delivery-date").val("");
+            jQuery(".cf-slot").val("");
+
           }else{
             console.log("It's not Dublin");
             // for DPD
@@ -814,9 +812,12 @@ jQuery(".theme-checkout-button-area .theme-cart-continue-shopping-button").html(
             jQuery(".dl-panel").show();
             jQuery(".dpd-panel").hide();
     
-            jQuery("#delivery-date").attr("disabled",true).addClass("fl-disabled").val("");
-            jQuery(".cf-slot").attr("disabled",true).addClass("fl-disabled").val("");
-    
+            // jQuery("#delivery-date").attr("disabled",true).addClass("fl-disabled").val("");
+            // jQuery(".cf-slot").attr("disabled",true).addClass("fl-disabled").val("");
+            
+            jQuery("#delivery-date").val("");
+            jQuery(".cf-slot").val("");
+
           }else{
             console.log("It's not Dublin");
             // for DPD
