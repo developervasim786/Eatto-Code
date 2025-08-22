@@ -173,7 +173,8 @@ var url = window.location.href;
             }
 
             if( form_error != true ){
-                jQuery("#tax_form .zpbutton").trigger("click");
+                // jQuery("#tax_form .zpbutton").trigger("click");
+                jQuery(this).prev().trigger("click");
                 jQuery("#zs-coupon-form").show();
             }
 
@@ -234,7 +235,8 @@ var url = window.location.href;
           }
 
           if( form_error != true ){
-              jQuery("#tax_form .zpbutton").trigger("click");
+              // jQuery("#tax_form .zpbutton").trigger("click");
+              jQuery(this).prev().trigger("click");
               jQuery("#zs-coupon-form").show();
           }
 
@@ -242,7 +244,8 @@ var url = window.location.href;
 
         
       }else{
-        jQuery("#tax_form .zpbutton").trigger("click");
+        // jQuery("#tax_form .zpbutton").trigger("click");
+        jQuery(this).prev().trigger("click");
         jQuery("#zs-coupon-form").show();
       }
 
@@ -458,9 +461,9 @@ var url = window.location.href;
       }
 
       if( dublin_type!= "" ){
-          order_notes = order_notes+" Dublin Type : "+dublin_type;
+          order_notes = order_notes+" Dublin";
       }else{
-          order_notes = order_notes+" Dublin Type : Not Available";
+          order_notes = order_notes+" Dublin";
       }
       
       jQuery("#full-time-slot").val(order_notes);
@@ -496,9 +499,9 @@ var url = window.location.href;
     }
 
     if( dublin_type!= "" ){
-        order_notes = order_notes+" Dublin Type : "+dublin_type;
+        order_notes = order_notes+" Dublin";
     }else{
-        order_notes = order_notes+" Dublin Type : Not Available";
+        order_notes = order_notes+" Dublin";
     }
 
     jQuery("#full-time-slot").val(order_notes);
