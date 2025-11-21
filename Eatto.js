@@ -24,18 +24,26 @@ var url = window.location.href;
   slots["Friday"]     = "09:00 - 15:00";
 
   const hollydayArr = [
-    "11",
-    "32",
-    "173",
-    "214",
-    "55",
-    "26",
-    "48",
-    "2710",
-    "2512",
-    "2612"
+    "112025",
+    "322025",
+    "1732025",
+    "2142025",
+    "552025",
+    "262025",
+    "482025",
+    "27102025",
+    "25122025",
+    "26122025",
+    "222026",
+    "1732026",
+    "642026",
+    "452026",
+    "162026",
+    "382026",
+    "26102026",
+    "25122026",
+    "26122026",
   ];
-
 
   jQuery(document).ready(function(){
 
@@ -351,11 +359,14 @@ var url = window.location.href;
             beforeShowDay:function(date){ 
             var day = date.getDay(); 
             var d_date = date.getDate(); 
-            var d_month = date.getMonth()+1; 
-            holiday_date_month = d_date+""+d_month;
+            var d_month = date.getMonth()+1;
+            var fullYear    = date.getFullYear();
+            holiday_date_month = d_date+""+d_month+""+fullYear;
             
+            var fullDate = d_date+"-"+d_month+"-"+fullYear;
 
-            return [(day != 0 && day != 6 && day != 1 && day != 4 && hollydayArr.includes(holiday_date_month) != true  ),''] 
+
+            return [(day != 0 && day != 6 && day != 1 && day != 4 && hollydayArr.includes(holiday_date_month) != true  && fullDate != "23-12-2025" && fullDate != "24-12-2025" && fullDate != "30-12-2025" && fullDate != "31-12-2025"  ),''] 
             }
         });
 
@@ -368,18 +379,20 @@ var url = window.location.href;
                     var d_month     = date.getMonth()+1;
                     var fullYear    = date.getFullYear();
 
-                    holiday_date_month = d_date+""+d_month;
+                    holiday_date_month = d_date+""+d_month+""+fullYear;
+
+                    console.log(holiday_date_month);
 
                     var fullDate = d_date+"-"+d_month+"-"+fullYear;
 
                     var fifthDay = 5;
-
+                    console.log(fullDate);
                     /*if( fullDate == '3-1-2025' ){
 
                         fifthDay = 312025;
                     }*/
 
-                    return [(day != 0 && day != 6 && day != 4 && day != fifthDay && hollydayArr.includes(holiday_date_month) != true ),'']
+                    return [(day != 0 && day != 6 && day != 4 && day != fifthDay && hollydayArr.includes(holiday_date_month) != true && fullDate != "22-12-2025" && fullDate != "23-12-2025" && fullDate != "24-12-2025" && fullDate != "29-12-2025" && fullDate != "30-12-2025" && fullDate != "31-12-2025" ),'']
                 }
             } 
         );
@@ -603,13 +616,13 @@ var url = window.location.href;
                     var d_month     = date.getMonth()+1;
                     var fullYear    = date.getFullYear();
 
-                    holiday_date_month = d_date+""+d_month;
+                    holiday_date_month = d_date+""+d_month+""+fullYear;
 
                     var fullDate = d_date+"-"+d_month+"-"+fullYear;
 
                     var fifthDay = 5;
 
-                    return [(day != 0 && day != 6 && day != 4 && day != fifthDay && hollydayArr.includes(holiday_date_month) != true ),'']
+                    return [(day != 0 && day != 6 && day != 4 && day != fifthDay && hollydayArr.includes(holiday_date_month) != true  && fullDate != "23-12-2025" && fullDate != "24-12-2025" && fullDate != "30-12-2025" && fullDate != "31-12-2025" ),'']
                 }
             } 
         );
@@ -624,7 +637,8 @@ var url = window.location.href;
         jQuery("#delivery-date").datepicker("destroy");
 
         // change to Dublin calender
-        jQuery( "#delivery-date" ).datepicker({ minDate: dub_min_date,beforeShowDay:function(date){ var day = date.getDay(); var d_date = date.getDate(); var d_month = date.getMonth()+1; holiday_date_month = d_date+""+d_month; return [(day != 0 && day != 6 && day != 1 && day != 4 && hollydayArr.includes(holiday_date_month) != true ),''] }});
+        jQuery( "#delivery-date" ).datepicker({ minDate: dub_min_date,beforeShowDay:function(date){ var day = date.getDay(); var d_date = date.getDate(); var d_month = date.getMonth()+1; var fullYear    = date.getFullYear(); holiday_date_month = d_date+""+d_month+""+fullYear; var fullDate = d_date+"-"+d_month+"-"+fullYear;
+ return [(day != 0 && day != 6 && day != 1 && day != 4 && hollydayArr.includes(holiday_date_month) != true  && fullDate != "23-12-2025" && fullDate != "24-12-2025" && fullDate != "30-12-2025" && fullDate != "31-12-2025" ),''] }});
       }
 
     }else{
